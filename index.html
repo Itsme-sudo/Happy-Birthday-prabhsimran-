@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Friend!</title>
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3, #a18cd1);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .birthday-card {
+            width: 85%;
+            max-width: 500px;
+            padding: 30px 20px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            margin: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #fffacd;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .birthday-img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 0 20px #fff;
+        }
+
+        button {
+            background: #ff4081;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            font-size: 17px;
+            border-radius: 30px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        button:hover {
+            background: #e91e63;
+            transform: scale(1.05);
+        }
+
+        #surprise {
+            display: none;
+            margin-top: 20px;
+            font-size: 22px;
+            color: #fffacd;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px pink; }
+            to { text-shadow: 0 0 20px yellow, 0 0 30px hotpink; }
+        }
+
+        .hearts {
+            font-size: 28px;
+            animation: float 2s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="birthday-card">
+
+        <div class="hearts">🎈 🎉 🎂 🎉 🎈</div>
+
+        <h1>Happy Birthday!</h1>
+
+        <!-- Add your friend's photo here -->
+        <img
+            src="friend.jpg"
+            alt="Birthday Friend"
+            class="birthday-img"
+        >
+
+        <h2>Dear Best Friend ❤️</h2>
+
+        <p>
+            Wishing you a day filled with happiness,
+            laughter, love, and unforgettable memories!
+            May all your dreams come true. ✨
+        </p>
+
+        <p>🥳 You deserve all the happiness in the world! 🥳</p>
+
+        <!-- Add your birthday music here -->
+        <audio id="birthdayMusic" loop>
+            <source src="birthday.mp3" type="audio/mp3">
+            Your browser does not support audio.
+        </audio>
+
+        <button onclick="showSurprise()">
+            🎁 Open Your Surprise
+        </button>
+
+        <button onclick="toggleMusic()" id="musicButton">
+            🎵 Play Birthday Music
+        </button>
+
+        <div id="surprise">
+            💖 You are an amazing friend! 💖
+            <br>
+            🎂 Have the BEST birthday ever! 🎂
+        </div>
+
+    </div>
+
+    <script>
+        function showSurprise() {
+            document.getElementById("surprise").style.display = "block";
+        }
+
+        function toggleMusic() {
+            const music = document.getElementById("birthdayMusic");
+            const button = document.getElementById("musicButton");
+
+            if (music.paused) {
+                music.play()
+                    .then(() => {
+                        button.textContent = "⏸️ Pause Birthday Music";
+                    })
+                    .catch(() => {
+                        alert("Please add birthday.mp3 to the project folder.");
+                    });
+            } else {
+                music.pause();
+                button.textContent = "🎵 Play Birthday Music";
+            }
+        }
+    </script>
+</body>
+</html>
